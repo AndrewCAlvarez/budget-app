@@ -27,6 +27,16 @@ public class User {
     @Column(name = "last_name", nullable = false, length = 20)
     private String lastName;
 
+    protected User(){};
+
+    public User(String email, String password, String firstName, String lastName) {
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+
     public long getId() {
         return id;
     }
@@ -67,11 +77,4 @@ public class User {
         this.lastName = lastName;
     }
 
-    public User(long id, String email, String password, String firstName, String lastName) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
 }
