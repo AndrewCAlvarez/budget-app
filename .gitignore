@@ -3,3 +3,4 @@
 
 ### DOCKER ###
 docker-compose.dev.yml
+api/src/main/resources/application.properties
