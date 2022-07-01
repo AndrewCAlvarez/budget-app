@@ -5,15 +5,18 @@
 */
 package com.budgetapp.api;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Objects;
 
 @Entity
 @Table(name = "users")
-public class User {
+class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private @Id @GeneratedValue Long id;
 
     @Column(nullable = false, unique = true, length = 45)
     private String email;
@@ -27,9 +30,9 @@ public class User {
     @Column(name = "last_name", nullable = false, length = 20)
     private String lastName;
 
-    protected User(){};
+    User(){};
 
-    public User(String email, String password, String firstName, String lastName) {
+    User(String email, String password, String firstName, String lastName) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;
@@ -37,11 +40,11 @@ public class User {
     }
 
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -77,4 +80,30 @@ public class User {
         this.lastName = lastName;
     }
 
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o)
+            return true;
+        if (!(o instanceof User))
+            return false;
+        User user = (User) o;
+        return Objects.equals(this.id, user.id)
+            && Objects.equals(this.email, user.email)
+            && Objects.equals(this.password, user.password)
+            && Objects.equals(this.firstName, user.firstName)
+            && Objects.equals(this.lastName, user.lastName);
+    }
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.id, this.email, this.password, this.firstName, this.lastName);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + this.id + ", email='" + this.email + '\'' + ", first name='" + this.firstName + '\'' +
+                ", last name='" + this.lastName + '\'' + '}';
+    }
 }

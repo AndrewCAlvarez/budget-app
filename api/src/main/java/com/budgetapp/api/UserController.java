@@ -1,44 +1,89 @@
 package com.budgetapp.api;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.server.ResponseStatusException;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/users")
 public class UserController {
-    @Autowired
-    private final UserRepository userRepository;
 
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    private final UserRepository repository;
+
+    UserController(UserRepository repository) {
+        this.repository = repository;
     }
 
-    // CREATE methods
-    @PostMapping("/add") // Map ONLY POST Requests
-    public @ResponseBody String addNewUser (@RequestParam String email
-            , @RequestParam String password, @RequestParam String firstName, @RequestParam String lastName) {
-        // @ResponseBody means the returned String is the response, not a view name
-        // @RequestParam means it is a parameter from the GET or POST request
+    // GET
 
-        User n = new User();
-        n.setEmail(email);
-        n.setPassword(password);
-        n.setFirstName(firstName);
-        n.setLastName(lastName);
-        userRepository.save(n);
-        return "Saved";
+    // Get all users.
+    @GetMapping("/users")
+    List<User> all() {
+        return repository.findAll();
     }
 
-    // READ methods
-    @GetMapping("/test")
-    public String test(){
-        System.out.println("THIS SHOULD WORK.");
-        return "Test.";
+    // Single item by id
+
+    @GetMapping("/users/{id}")
+    User one(@PathVariable Long id) {
+
+        return repository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException(id));
     }
 
-    // UPDATE methods
+    // POST
+    @PostMapping("/users")
+    User newUser(@RequestBody User newUser) {
+        return repository.save(newUser);
+    }
 
-    // DELETE methods
+    // This is an old implementation that worked.
+ //   @PostMapping("/users") // Map ONLY POST Requests
+//    {public @ResponseBody String addNewUser(@RequestParam String email, @RequestParam String password,
+//            @RequestParam String firstName, @RequestParam String lastName) {
+//        // @ResponseBody means the returned String is the response, not a view name
+//        // @RequestParam means it is a parameter from the GET or POST request
+//
+//        User n = new User();
+//        n.setEmail(email);
+//        n.setPassword(password);
+//        n.setFirstName(firstName);
+//        n.setLastName(lastName);
+//        repository.save(n);
+//        return "Saved";
+//    }}
+
+    // PUT
+
+    // PUT by id.
+    @PutMapping("/users/{id}")
+    User replaceUser(@RequestBody User newUser, @PathVariable Long id) {
+
+        return repository.findById(id)
+                .map(user -> {
+                    user.setEmail(newUser.getEmail());
+                    user.setPassword(newUser.getPassword());
+                    user.setFirstName(newUser.getFirstName());
+                    user.setLastName(newUser.getLastName());
+                    return repository.save(user);
+                })
+                .orElseGet(() -> {
+                    newUser.setId(id);
+                    return repository.save(newUser);
+                });
+    }
+
+    // DELETE
+
+    // Delete by id.
+    @DeleteMapping("/users/{id}")
+    void deleteUser(@PathVariable Long id) {
+        repository.deleteById(id);
+    }
+
 }
