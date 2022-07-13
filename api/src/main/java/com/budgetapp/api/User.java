@@ -103,7 +103,10 @@ class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + this.id + ", email='" + this.email + '\'' + ", first name='" + this.firstName + '\'' +
-                ", last name='" + this.lastName + '\'' + '}';
+        return "User{"
+                + "id=" + this.id
+                + ", email='" + this.email + '\''
+                + ", first name='" + this.firstName + '\''
+                + ", last name='" + this.lastName + '\'' + '}';
     }
 }
