@@ -1,16 +1,27 @@
-import { ChangeEventHandler, useEffect, useState } from "react";
+/*
+    ISSUE: Monetary amount has strange rounding errors and NaN responses.
+*/
+
+import {
+  ChangeEventHandler,
+  FormEvent,
+  FormEventHandler,
+  useEffect,
+  useState,
+} from "react";
 import React from "react";
+import PostFinancialEvent from "../Functions/PostFinancialEvent";
 
 function FinancialEventForm() {
-  const [amount, setAmount] = useState("$0.00");
+  const [amount, setAmount] = useState(0.0);
   const [type, setType] = useState("Food");
   const [description, setDescription] = useState("");
 
   // With Typescript, the types need to be explicitly state. This is why
   // React.ChangeEvent<> is used here.
-  //   const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //     setAmount(new Intl.NumberFormat().format(event.target.value));
-  //   };
+  const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setAmount(Number(parseFloat(event.target.value)));
+  };
 
   const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setType(event.target.value);
@@ -22,12 +33,18 @@ function FinancialEventForm() {
     setDescription(event.target.value);
   };
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    PostFinancialEvent(amount, type, description);
+  };
+
   return (
-    <form>
-      {/* <label>
+    <form onSubmit={handleSubmit}>
+      <h1>Add New Financial Event</h1>
+      <label>
         Amount:
         <input placeholder="$0.00" type="text" onChange={handleAmountChange} />
-      </label> */}
+      </label>
 
       <select value={type} onChange={handleTypeChange}>
         <option value="Food">Food</option>
@@ -47,6 +64,7 @@ function FinancialEventForm() {
       <p>
         Values: Amount - ${amount} Type - {type} Description - {description}
       </p>
+      <input type="submit" />
     </form>
   );
 }
