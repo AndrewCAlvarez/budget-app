@@ -17,6 +17,7 @@ class FinancialEventController {
     // Aggregate root
     // tag::get-aggregate-root[]
     @GetMapping("/users/{userId}/events")
+    @CrossOrigin(origins = "http://localhost:3000")
     List<FinancialEvent> all(@PathVariable Long userId) {
         List<FinancialEvent> financialEvents = repository.findByUserId(userId);
         return financialEvents;
