@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AddFinancialEventComponent } from './add-financial-event/add-financial-event.component';
 import { FinancialEventTableComponent } from './financial-event-table/financial-event-table.component';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
       { path: '', component: FinancialEventTableComponent },
