@@ -1,3 +1,4 @@
+// TODO: Check for migrations to financial-event service and delete this service.
 import { Injectable } from '@angular/core';
 import { FinancialEvent } from 'src/assets/financial-events';
 
