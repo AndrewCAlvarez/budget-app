@@ -1,3 +1,4 @@
+// TODO: Delete
 export interface FinancialEvent {
   id: number;
   amount: number;

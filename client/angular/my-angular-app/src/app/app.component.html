@@ -1,2 +1,19 @@
+<!-- TODO: Default page should be sign-in if not signed in. I have left it out for now to hasten development of other parts of the app. -->
 <h1>Budget App</h1>
-<app-financial-events></app-financial-events>
+<nav>
+  <a class="button" routerLink="/dashboard" routerLinkActive="activebutton"
+    >Dashboard</a
+  >
+  |
+  <!-- Statement refers to all financial events listed -->
+  <a class="button" routerLink="/statement" routerLinkActive="activebutton"
+    >Statement</a
+  >
+  |
+  <a class="button" routerLink="/sign-in" routerLinkActive="activebutton"
+    >Sign-in</a
+  >
+</nav>
+
+<!-- router-outlet is the component that actually displays other components. The links above tell Angular which address the app should go to. -->
+<router-outlet></router-outlet>
