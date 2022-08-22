@@ -1,1 +1,15 @@
 <h2>Statement</h2>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Type</th>
+    <th>Amount</th>
+    <th>Description</th>
+  </tr>
+  <tr *ngFor="let financialEvent of financialEvents">
+    <td>{{ financialEvent.id }}</td>
+    <td>{{ financialEvent.amount }}</td>
+    <td>{{ financialEvent.type }}</td>
+    <td>{{ financialEvent.description }}</td>
+  </tr>
+</table>

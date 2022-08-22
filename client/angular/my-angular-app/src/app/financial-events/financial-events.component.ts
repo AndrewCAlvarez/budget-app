@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {
   FinancialEvent,
   FinancialEventService,
-} from '../financial-event.service';
+} from './financial-event.service';
 
 @Component({
   selector: 'app-financial-events',
@@ -10,19 +10,19 @@ import {
   styleUrls: ['./financial-events.component.scss'],
 })
 export class FinancialEventsComponent implements OnInit {
-  financialEvent: FinancialEvent | undefined;
+  financialEvents: FinancialEvent[] = [];
 
+  // Inject the FinancialEventService dependency
   constructor(private financialEventService: FinancialEventService) {}
 
   ngOnInit(): void {
     this.getFinancialEvents();
   }
 
-  getFinancialEvents() {
+  // Subscribe to FinancialEventService and populate the financialEvents object
+  getFinancialEvents(): void {
     this.financialEventService
       .getFinancialEvents()
-      .subscribe((data: FinancialEvent) => {
-        this.financialEvent = { ...data };
-      });
+      .subscribe((financialEvents) => (this.financialEvents = financialEvents));
   }
 }
