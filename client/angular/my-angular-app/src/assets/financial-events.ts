@@ -1,5 +1,6 @@
 // TODO: Delete
 export interface FinancialEvent {
+  url: 'http://localhost:8080/users/1/events';
   id: number;
   amount: number;
   type: string;

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  FinancialEvent,
+  FinancialEventService,
+} from '../financial-event.service';
 
 @Component({
   selector: 'app-financial-events',
@@ -6,7 +10,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./financial-events.component.scss'],
 })
 export class FinancialEventsComponent implements OnInit {
-  constructor() {}
+  financialEvent: FinancialEvent | undefined;
 
-  ngOnInit(): void {}
+  constructor(private financialEventService: FinancialEventService) {}
+
+  ngOnInit(): void {
+    this.getFinancialEvents();
+  }
+
+  getFinancialEvents() {
+    this.financialEventService
+      .getFinancialEvents()
+      .subscribe((data: FinancialEvent) => {
+        this.financialEvent = { ...data };
+      });
+  }
 }
