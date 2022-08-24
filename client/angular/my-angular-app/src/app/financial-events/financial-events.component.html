@@ -6,10 +6,53 @@
     <th>Amount</th>
     <th>Description</th>
   </tr>
+  <!-- For each item in array, create new DOM object with data of item. -->
   <tr *ngFor="let financialEvent of financialEvents">
     <td>{{ financialEvent.id }}</td>
-    <td>{{ financialEvent.amount }}</td>
     <td>{{ financialEvent.type }}</td>
+    <td>{{ financialEvent.amount }}</td>
     <td>{{ financialEvent.description }}</td>
   </tr>
 </table>
+
+<!-- ADD new financial event -->
+<!-- TODO: Adding could be a separate component. -->
+<h2>Add New Financial Event</h2>
+<div>
+  <label for="new-financial-event">Amount: </label>
+  <input id="new-financial-event" type="number" #financialEventAmount />
+
+  <label for="new-financial-event">Type: </label>
+  <select id="new-financial-event" #financialEventType>
+    <option value="House">Housing</option>
+    <option value="Transportation">Transportation</option>
+    <option value="Food">Food</option>
+    <option value="Utilities">Utilities</option>
+    <option value="Insurance">Insurance</option>
+    <option value="Healthcare">Healthcare</option>
+    <option value="Saving, Investing, & Debt Payments">
+      Saving, Investing & Debt Payments
+    </option>
+    <option value="Personal">Personal</option>
+    <option value="Entertainment">Entertainment</option>
+    <option value="Miscellaneous">Miscellaneous</option>
+  </select>
+
+  <label for="new-financial-event">Description: </label>
+  <input id="new-financial-event" #financialEventDescription />
+
+  <!-- (click) passes input values to add()-->
+  <button
+    type="button"
+    class="add-button"
+    (click)="
+      add(
+        financialEventAmount.valueAsNumber,
+        financialEventType.value,
+        financialEventDescription.value
+      )
+    "
+  >
+    Add Financial Event
+  </button>
+</div>

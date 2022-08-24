@@ -23,7 +23,9 @@ class FinancialEventController {
         return financialEvents;
     }
     // end::get-aggregate-root[]
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    // POST single item
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/events")
     FinancialEvent newFinancialEvent(@RequestBody FinancialEvent newFinancialEvent) {
         return repository.save(newFinancialEvent);
