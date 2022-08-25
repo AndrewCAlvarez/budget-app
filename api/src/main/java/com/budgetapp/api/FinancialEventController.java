@@ -49,14 +49,10 @@ class FinancialEventController {
 
         System.out.println("POST new financial event:" + financialEvent);
         return repository.save(financialEvent);
-
-//        FinancialEvent financialEvent0 = financialEventRepository.save(
-//                new FinancialEvent(1L, frodo, LocalDateTime.now(),
-//                        new BigDecimal("14.50"), "ENTERTAINMENT", "Saw a movie."));
     }
 
     // Single item
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/events/{id}")
     FinancialEvent one(@PathVariable Long id) {
 
@@ -64,6 +60,7 @@ class FinancialEventController {
                 .orElseThrow(() -> new FinancialEventNotFoundException(id));
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/events/{id}")
     FinancialEvent replaceFinancialEvent(@RequestBody FinancialEvent newFinancialEvent, @PathVariable Long id) {
 
@@ -82,6 +79,7 @@ class FinancialEventController {
                 });
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/events/{id}")
     void deleteEmployee(@PathVariable Long id) {
         repository.deleteById(id);
