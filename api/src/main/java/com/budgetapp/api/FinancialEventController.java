@@ -1,6 +1,9 @@
 package com.budgetapp.api;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -9,8 +12,12 @@ class FinancialEventController {
 
     private final FinancialEventRepository repository;
 
-    FinancialEventController(FinancialEventRepository repository) {
+    // TODO: Not sure about adding userRepository here. I have it written here so i can make mock users to push along my Angular development.
+    private final UserRepository userRepository;
+
+    FinancialEventController(FinancialEventRepository repository, UserRepository userRepository) {
         this.repository = repository;
+        this.userRepository = userRepository;
     }
 
 
@@ -28,7 +35,24 @@ class FinancialEventController {
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/events")
     FinancialEvent newFinancialEvent(@RequestBody FinancialEvent newFinancialEvent) {
-        return repository.save(newFinancialEvent);
+
+        // TODO: Add a parameter or authorization of some kind to specify a user instead of hardcoding one.
+        Optional<User> frodo = userRepository.findById(1L);
+
+        FinancialEvent financialEvent = new FinancialEvent();
+        financialEvent.setId(1L);
+        financialEvent.setUser(frodo.get());
+        financialEvent.setDate(LocalDateTime.now());
+        financialEvent.setAmount(newFinancialEvent.getAmount());
+        financialEvent.setType(newFinancialEvent.getType());
+        financialEvent.setDescription(newFinancialEvent.getDescription());
+
+        System.out.println("POST new financial event:" + financialEvent);
+        return repository.save(financialEvent);
+
+//        FinancialEvent financialEvent0 = financialEventRepository.save(
+//                new FinancialEvent(1L, frodo, LocalDateTime.now(),
+//                        new BigDecimal("14.50"), "ENTERTAINMENT", "Saw a movie."));
     }
 
     // Single item
