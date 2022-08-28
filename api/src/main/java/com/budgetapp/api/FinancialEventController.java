@@ -51,15 +51,16 @@ class FinancialEventController {
         return repository.save(financialEvent);
     }
 
-    // Single item
+    // GET Single item
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/events/{id}")
     FinancialEvent one(@PathVariable Long id) {
-
+        System.out.println("GET FINANCIAL EVENT ID=" + id);
         return repository.findById(id)
                 .orElseThrow(() -> new FinancialEventNotFoundException(id));
     }
 
+    // PUT single item
     @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/events/{id}")
     FinancialEvent replaceFinancialEvent(@RequestBody FinancialEvent newFinancialEvent, @PathVariable Long id) {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs';
+import { catchError, retry, tap } from 'rxjs';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 // This interface allows the service to specify a typed response
@@ -32,17 +32,29 @@ export class FinancialEventService {
 
   /* ------------ HTTP REQUESTS -------------------- */
 
-  /* GET:  Get financial events from the server via the financial event service. 
+  /* GET:  
+  Get all financial events from the server via the financial event service. 
   Fetch an array of Financial Event objects
   Observable is a design pattern called Observer. The Object (the subject) maintains a list of dependents (observers).   */
   getFinancialEvents(): Observable<FinancialEvent[]> {
     return this.http
       .get<FinancialEvent[]>(this.financialEventUrl + '/users/1/events')
       .pipe(
+        // tap looks at the observable's values, does something with them, then passes them along. Tap does not access those values directly.
+        tap((_) => console.log('fetched financial event')),
         // Retry will send another request to the server. Sometimes errors are transient, especially in a mobile context.
         retry(3),
         catchError(this.handleError('getFinancialEvents', []))
       );
+  }
+
+  /** GET financial event by ID */
+  getFinancialEvent(id: number): Observable<FinancialEvent> {
+    const url = this.financialEventUrl + `/events/${id}`;
+    return this.http.get<FinancialEvent>(url).pipe(
+      tap((_) => console.log(`fetched financial event id=${id}`)),
+      catchError(this.handleError<FinancialEvent>(`getFinancialEvent id=${id}`))
+    );
   }
 
   /** POST: Add a new financial event to the server via the service.
@@ -69,7 +81,7 @@ export class FinancialEventService {
       .pipe(catchError(this.handleError('addFinancialEvent', financialEvent)));
   }
 
-  /* ------------------- ERROR HANDLING -------------------- */
+  /* ------------------- ERROR HANDLING IMPLEMENTATION -------------------- */
 
   /**
    * Handle Http operation that failed.

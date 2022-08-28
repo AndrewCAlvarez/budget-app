@@ -16,14 +16,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 // Mock financial event data import
 // TODO: Remove once real data is accessed via api
-import { financialEvents } from 'src/assets/financial-events';
-
-const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'statement', component: FinancialEventsComponent },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent },
-];
+// import { financialEvents } from 'src/assets/financial-events';
 
 @NgModule({
   declarations: [
@@ -36,19 +29,7 @@ const routes: Routes = [
     RegisterComponent,
     PageNotFoundComponent,
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    RouterModule.forRoot([
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'statement', component: FinancialEventsComponent },
-      { path: 'sign-in', component: SignInComponent },
-      { path: 'register', component: RegisterComponent },
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: '**', component: PageNotFoundComponent },
-    ]),
-  ],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
