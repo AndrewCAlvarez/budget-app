@@ -48,7 +48,8 @@ export class FinancialEventService {
       );
   }
 
-  /** GET financial event by ID */
+  /** GET
+   * financial event by ID */
   getFinancialEvent(id: number): Observable<FinancialEvent> {
     const url = this.financialEventUrl + `/events/${id}`;
     return this.http.get<FinancialEvent>(url).pipe(
@@ -57,7 +58,8 @@ export class FinancialEventService {
     );
   }
 
-  /** POST: Add a new financial event to the server via the service.
+  /** POST:
+   * Add a new financial event to the server via the service.
    * TODO: Possible errors with type needing date and id. Maybe this should be handled by the api server-side? When rerendered client-side it generates its own id.
    */
   addFinancialEvent(
@@ -79,6 +81,35 @@ export class FinancialEventService {
         httpOptions
       )
       .pipe(catchError(this.handleError('addFinancialEvent', financialEvent)));
+  }
+
+  // UPDATE
+
+  updateFinancialEvent(
+    id: number,
+    amount: number,
+    type: string,
+    description: string
+  ): Observable<any> {
+    const financialEvent: FinancialEvent = {
+      id: id,
+      amount: amount,
+      type: type,
+      description: description,
+    };
+    console.log(financialEvent);
+    return this.http
+      .put(this.financialEventUrl + `/events/${id}`, financialEvent)
+      .pipe(catchError(this.handleError<any>('update financial event')));
+  }
+
+  // DELETE
+  deleteFinancialEvent(id: number): Observable<FinancialEvent> {
+    const url = this.financialEventUrl + `/events/${id}`;
+    return this.http.delete<FinancialEvent>(url).pipe(
+      tap((_) => console.log('deleted financial event id=' + id)),
+      catchError(this.handleError<FinancialEvent>('deleteFinancialEvent'))
+    );
   }
 
   /* ------------------- ERROR HANDLING IMPLEMENTATION -------------------- */

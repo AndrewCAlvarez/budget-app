@@ -34,15 +34,15 @@ class LoadDatabase {
             // Create and add financial events.
             FinancialEvent financialEvent0 = financialEventRepository.save(
                     new FinancialEvent(1L, frodo, LocalDateTime.now(),
-                    new BigDecimal("14.50"), "ENTERTAINMENT", "Saw a movie."));
+                    new BigDecimal("14.50"), "Entertainment", "Saw a movie."));
 
             FinancialEvent financialEvent1 = financialEventRepository.save(
                     new FinancialEvent(1L, frodo, LocalDateTime.now(),
-                    new BigDecimal("14.50"), "HOME", "Saw a movie."));
+                    new BigDecimal("14.50"), "Food", "Second breakfast."));
 
             FinancialEvent financialEvent2 = financialEventRepository.save(
                     new FinancialEvent(1L, sam, LocalDateTime.now(),
-                    new BigDecimal("5.00"), "HOME", "Gardening tools."));
+                    new BigDecimal("5.00"), "Housing", "Bagend renovations."));
 
             // Log financial event info.
             log.info("Preloading data " + financialEvent0);

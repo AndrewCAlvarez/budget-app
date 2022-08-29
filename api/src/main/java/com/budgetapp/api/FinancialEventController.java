@@ -67,11 +67,13 @@ class FinancialEventController {
 
         return repository.findById(id)
                 .map(financialEvent -> {
-                    financialEvent.setUser(newFinancialEvent.getUser());
-                    financialEvent.setDate(newFinancialEvent.getDate());
+                    // Automatically assigns to the user.
+                    financialEvent.setDate(LocalDateTime.now());
                     financialEvent.setAmount(newFinancialEvent.getAmount());
                     financialEvent.setType(newFinancialEvent.getType());
                     financialEvent.setDescription(newFinancialEvent.getDescription());
+
+                    System.out.println("Update financial event: " + financialEvent);
                     return repository.save(financialEvent);
                 })
                 .orElseGet(() -> {
@@ -80,9 +82,12 @@ class FinancialEventController {
                 });
     }
 
+
+    // DELETE
     @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/events/{id}")
     void deleteEmployee(@PathVariable Long id) {
+        System.out.println("Delete financial event id=" + id);
         repository.deleteById(id);
     }
 }
