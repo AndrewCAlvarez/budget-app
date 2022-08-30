@@ -33,4 +33,13 @@ export class FinancialEventFormComponent implements OnInit {
         .subscribe();
     }
   }
+
+  /** Add new financial event.
+   * TODO: Figure out how to tie the event to a user with an id and date.
+   */
+  add(amount: number, type: string, description: string): void {
+    this.financialEventService
+      .addFinancialEvent(amount, type, description)
+      .subscribe();
+  }
 }
