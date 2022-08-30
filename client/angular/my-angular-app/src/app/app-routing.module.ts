@@ -6,11 +6,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FinancialEventDetailsComponent } from './financial-event-details/financial-event-details.component';
 import { FinancialEventsComponent } from './financial-events/financial-events.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'financial-events', component: FinancialEventsComponent },
   { path: 'events/:id', component: FinancialEventDetailsComponent },
+  { path: 'sign-in', component: SignInComponent },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
