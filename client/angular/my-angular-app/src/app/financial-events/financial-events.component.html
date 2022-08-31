@@ -1,0 +1,19 @@
+<h2>Financial Events</h2>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Type</th>
+    <th>Amount</th>
+    <th>Description</th>
+  </tr>
+  <!-- For each item in array, create new DOM object with data of item. -->
+  <tr
+    *ngFor="let financialEvent of financialEvents"
+    routerLink="/events/{{ financialEvent.id }}"
+  >
+    <td>{{ financialEvent.id }}</td>
+    <td>{{ financialEvent.type }}</td>
+    <td>{{ financialEvent.amount }}</td>
+    <td>{{ financialEvent.description }}</td>
+  </tr>
+</table>
