@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+
+
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,7 +22,7 @@ class FinancialEventController {
         this.userRepository = userRepository;
     }
 
-
+    // GET all events by user id
     // Aggregate root
     // tag::get-aggregate-root[]
     @GetMapping("/users/{userId}/events")
