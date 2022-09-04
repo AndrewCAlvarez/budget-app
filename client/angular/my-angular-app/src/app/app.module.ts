@@ -17,6 +17,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 // Mock financial event data import
 // TODO: Remove once real data is accessed via api
 // import { financialEvents } from 'src/assets/financial-events';
+// Could be used as part of demo capability
 
 @NgModule({
   declarations: [

@@ -49,7 +49,8 @@ export class FinancialEventService {
   }
 
   /** GET
-   * financial event by ID */
+   * financial event by ID
+   * TODO: Make a clearer name for this function. This is easy to confuse with getFinancialEvents which is all events rather than by id. */
   getFinancialEvent(id: number): Observable<FinancialEvent> {
     const url = this.financialEventUrl + `/events/${id}`;
     return this.http.get<FinancialEvent>(url).pipe(
