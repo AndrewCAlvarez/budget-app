@@ -1,21 +1,20 @@
 <!-- TODO: Default page should be sign-in if not signed in. I have left it out for now to hasten development of other parts of the app. -->
-<input type="text" placeholder="search" />
-<nav>
-  <a class="button" routerLink="/dashboard" routerLinkActive="activebutton"
+
+<!-- Main nav -->
+<nav class="w-full flex">
+  <a
+    class="button"
+    routerLink="/dashboard"
+    routerLinkActive="activebutton"
+    class="float-left"
     >Dashboard</a
   >
-  | |
-  <a class="button" routerLink="/sign-in" routerLinkActive="activebutton"
+  <a class="float-right" routerLink="/sign-in" routerLinkActive="activebutton"
     >Sign-in</a
   >
-  |
-  <a class="button">Logout</a>
-  <a href="#">Account</a>
+  <a class="button hidden">Logout</a>
+  <a href="#" class="hidden">Account</a>
 </nav>
-<a class="button" routerLink="/financial-events" routerLinkActive="activebutton"
-  >History</a
->
-<a href="#">Graph</a>
 
 <!-- router-outlet is the component that actually displays other components. The links above tell Angular which address the app should go to. -->
 <router-outlet></router-outlet>
