@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { RegisterComponent } from './register/register.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SummaryComponent } from './summary/summary.component';
 
 // Mock financial event data import
 // TODO: Remove once real data is accessed via api
@@ -29,6 +30,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     SignInComponent,
     RegisterComponent,
     PageNotFoundComponent,
+    SummaryComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],

@@ -1,5 +1,41 @@
-<!-- If isNewFinancialEvent, then display form for POST. Else form for PUT/DELETE -->
+<!-- Search -->
+<div
+  class="bg-gray-800 rounded-md w-full h-10 mt-4 flex items-center justify-start"
+>
+  <i
+    class="fa-solid fa-magnifying-glass text-zinc-400 basis-8 flex items-center justify-center"
+  ></i>
+  <input
+    type="text"
+    placeholder="search"
+    class="basis-full h-full bg-gray-800 hover:ring-0 focus:outline-none focus:ring focus:outline-gray-500"
+  />
+</div>
+
+<!-- Sub nav -->
+<div
+  class="bg-gray-800 rounded-md w-full h-10 mt-4 flex items-center justify-center"
+>
+  <!-- TODO: Change style on select -->
+  <div
+    class="bg-gradient-to-r from-yellow-600 to-yellow-500 rounded-md h-full basis-1/2 text-black flex items-center justify-center"
+  >
+    <a routerLink="/financial-events" routerLinkActive="activebutton"
+      >History</a
+    >
+  </div>
+  <div class="h-full basis-1/2 text-gray-400 flex items-center justify-center">
+    <a href="#">Graph</a>
+  </div>
+</div>
+
+<!-- Summary -->
+<app-summary></app-summary>
+
+<!-- If isNewFinancialEvent, then display form for POST. Else form for PUT/DELETE
 <app-financial-event-form
   [isNewFinancialEvent]="true"
-></app-financial-event-form>
+></app-financial-event-form> -->
+
+<!-- Financial event history -->
 <app-financial-events></app-financial-events>
