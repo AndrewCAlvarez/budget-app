@@ -1,13 +1,12 @@
-<h2>Financial Events</h2>
-<table>
+<!-- <table>
   <tr>
     <th>Id</th>
     <th>Type</th>
     <th>Amount</th>
     <th>Description</th>
-  </tr>
-  <!-- For each item in array, create new DOM object with data of item. -->
-  <tr
+  </tr> -->
+<!-- For each item in array, create new DOM object with data of item. -->
+<!-- <tr
     *ngFor="let financialEvent of financialEvents"
     routerLink="/events/{{ financialEvent.id }}"
   >
@@ -16,4 +15,29 @@
     <td>{{ financialEvent.amount }}</td>
     <td>{{ financialEvent.description }}</td>
   </tr>
-</table>
+</table> -->
+
+<!-- Financial events list -->
+<h2 class="mt-4 mb-4">Transactions</h2>
+<ul
+  *ngFor="let financialEvent of financialEvents"
+  routerLink="/events/{{ financialEvent.id }}"
+  class="flex flex-row items-center justify-start border-b border-zinc-500"
+>
+  <li
+    class="basis-1/6 flex items-center justify-center rounded-full bg-purple-500 h-full"
+  >
+    {{ financialEvent.type.charAt(0) }}
+  </li>
+  <li class="flex flex-col basis-1/2">
+    <div class="flex items-center justify-center">
+      {{ financialEvent.type }}
+    </div>
+    <div class="flex items-center justify-center text-zinc-400">
+      <p>Today, 8:35am</p>
+    </div>
+  </li>
+  <li class="basis-2/6 flex items-center justify-end">
+    ${{ financialEvent.amount }}
+  </li>
+</ul>
