@@ -1,3 +1,4 @@
+<!-- EDIT existing financial event  -->
 <div *ngIf="!isNewFinancialEvent">
   <h2>Update Financial Event</h2>
   <label for="new-financial-event">Amount: </label>
@@ -40,7 +41,7 @@
     type="button"
     class="save-button"
     (click)="
-      save(
+      update(
         financialEventAmount.valueAsNumber,
         financialEventType.value,
         financialEventDescription.value
@@ -55,7 +56,7 @@
 
 <!-- ADD new financial event -->
 <!-- TODO: Adding could be a separate component. -->
-<div *ngIf="isNewFinancialEvent">
+<!-- <div *ngIf="isNewFinancialEvent" [hidden]="submitted" class="text-black">
   <h2>Add New Financial Event</h2>
   <label for="new-financial-event">Amount: </label>
   <input id="new-financial-event" type="number" #financialEventAmount />
@@ -80,7 +81,7 @@
   <input id="new-financial-event" #financialEventDescription />
 
   <!-- (click) passes input values to add()-->
-  <button
+<!-- <button
     type="button"
     class="add-button"
     (click)="
@@ -93,4 +94,51 @@
   >
     Add Financial Event
   </button>
-</div>
+</div> -->
+
+<!-- Add New Transaction -->
+<form
+  [formGroup]="transactionForm"
+  (ngSubmit)="onSubmit()"
+  class="text-black flex flex-col"
+>
+  <label for="amount">Amount: </label>
+  <div class="text-gray-200 text-4xl rounded-md h-10 mt-4">
+    <span>$</span>
+    <input
+      id="amount"
+      type="text"
+      formControlName="amount"
+      required
+      class="bg-transparent"
+    />
+  </div>
+
+  <label for="type">Type: </label>
+  <select
+    id="type"
+    formControlName="type"
+    required
+    class="bg-gradient-to-r from-orange-500 to-orange-600 rounded-md w-full h-10 mt-4"
+  >
+    <option *ngFor="let type of types" [ngValue]="type">
+      {{ type }}
+    </option>
+  </select>
+
+  <label for="description">Description: </label>
+  <input
+    id="description"
+    type="text"
+    formControlName="description"
+    class="bg-gray-100 rounded-md w-full h-10 mt-4"
+  />
+
+  <button
+    type="submit"
+    [disabled]="!transactionForm.valid"
+    class="bg-gradient-to-r from-yellow-600 to-yellow-500 rounded-md w-full h-10 mt-4 mb-4"
+  >
+    Submit
+  </button>
+</form>

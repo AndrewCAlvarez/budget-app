@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import {
   FinancialEvent,
   FinancialEventService,
 } from '../financial-events/financial-event.service';
+import { FinancialEventsComponent } from '../financial-events/financial-events.component';
 
 @Component({
   selector: 'app-financial-event-form',
@@ -10,14 +12,55 @@ import {
   styleUrls: ['./financial-event-form.component.scss'],
 })
 export class FinancialEventFormComponent implements OnInit {
+  transactionForm = this.fb.group({
+    amount: [10],
+    type: ['Food'],
+    description: [''],
+  });
+
   @Input() financialEvent!: FinancialEvent | undefined;
   @Input() isNewFinancialEvent: boolean | undefined;
 
-  constructor(private financialEventService: FinancialEventService) {}
+  types = [
+    'Food',
+    'House',
+    'Transportation',
+    'Utilities',
+    'Insurance',
+    'Healthcare',
+    'Saving, Investing, & Debt Payments',
+    'Personal',
+    'Entertainment',
+    'Miscellaneous',
+  ];
+
+  submitted = false;
+  onSubmit(): void {
+    if (
+      typeof this.transactionForm.value.amount === 'number' &&
+      typeof this.transactionForm.value.type === 'string' &&
+      typeof this.transactionForm.value.description === 'string'
+    ) {
+      this.add(
+        this.transactionForm.value.amount,
+        this.transactionForm.value.type,
+        this.transactionForm.value.description
+      );
+    }
+
+    console.log('Submitted.');
+    this.submitted = true;
+    this.transactionForm.reset();
+  }
+
+  constructor(
+    private financialEventService: FinancialEventService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {}
 
-  save(amount: number, type: string, description: string): void {
+  update(amount: number, type: string, description: string): void {
     if (this.financialEvent) {
       this.financialEventService
         .updateFinancialEvent(this.financialEvent.id, amount, type, description)

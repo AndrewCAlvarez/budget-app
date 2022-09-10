@@ -1,8 +1,11 @@
 <div
-  class="container bg-gradient-to-r from-green-900 to-green-700 rounded-2xl h-52 mt-6"
+  class="container bg-gradient-to-r from-green-900 to-green-700 rounded-2xl min-h-fit mt-6"
 >
-  <h2>$458.42</h2>
-  <a routerLink="/add" class="border-dotted border rounded-full"
+  <h2>Summary</h2>
+  <!-- <a routerLink="/add" class="border-dotted border rounded-full"
     ><i class="fa-solid fa-plus"></i
-  ></a>
+  ></a> -->
+  <app-financial-event-form
+    [isNewFinancialEvent]="true"
+  ></app-financial-event-form>
 </div>
