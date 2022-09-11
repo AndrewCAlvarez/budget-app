@@ -1,4 +1,5 @@
 <!-- EDIT existing financial event  -->
+<!-- The update part of this form is template driven and not recommended by Google for anything other than simple forms.  -->
 <div *ngIf="!isNewFinancialEvent">
   <h2>Update Financial Event</h2>
   <label for="new-financial-event">Amount: </label>
@@ -97,41 +98,43 @@
 </div> -->
 
 <!-- Add New Transaction -->
+<!-- This is a reactive form and is recommended by Google. -->
 <form
   [formGroup]="transactionForm"
   (ngSubmit)="onSubmit()"
   class="text-black flex flex-col"
 >
-  <label for="amount">Amount: </label>
-  <div class="text-gray-200 text-4xl rounded-md h-10 mt-4">
+  <label for="amount">Amount </label>
+  <div class="text-gray-200 text-4xl rounded-md h-10 mt-2">
     <span>$</span>
     <input
       id="amount"
-      type="text"
+      type="number"
       formControlName="amount"
+      inputmode="decimal"
       required
       class="bg-transparent w-1/2"
     />
   </div>
 
-  <label for="type">Type: </label>
+  <label for="type">Category </label>
   <select
     id="type"
     formControlName="type"
     required
-    class="bg-gradient-to-r from-orange-500 to-orange-600 rounded-md w-full h-10 mt-4"
+    class="bg-orange-500 rounded-md w-full h-10 mt-2"
   >
     <option *ngFor="let type of types" [ngValue]="type">
       {{ type }}
     </option>
   </select>
 
-  <label for="description">Description: </label>
+  <label for="description">Description </label>
   <input
     id="description"
     type="text"
     formControlName="description"
-    class="bg-gray-100 rounded-md w-full h-10 mt-4"
+    class="bg-gray-100 rounded-md w-full h-10 mt-2"
   />
 
   <button
