@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgChartsModule } from 'ng2-charts';
 
 // Components
 import { FinancialEventsComponent } from './financial-events/financial-events.component';
@@ -15,6 +16,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { RegisterComponent } from './register/register.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SummaryComponent } from './summary/summary.component';
+import { ChartComponent } from './chart/chart.component';
 
 // Mock financial event data import
 // TODO: Remove once real data is accessed via api
@@ -32,12 +34,14 @@ import { SummaryComponent } from './summary/summary.component';
     RegisterComponent,
     PageNotFoundComponent,
     SummaryComponent,
+    ChartComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
