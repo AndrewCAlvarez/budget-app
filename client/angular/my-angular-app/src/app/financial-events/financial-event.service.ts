@@ -113,6 +113,22 @@ export class FinancialEventService {
     );
   }
 
+  /* ------------------- SEARCH ------------------------*/
+  /* GET financial events whose name contains search term */
+  searchFinancialEvents(term: string): Observable<FinancialEvent[]> {
+    if (!term.trim()) {
+      // if not search term, return empty financialEvent array.
+      return of([]);
+    }
+    return this.http
+      .get<FinancialEvent[]>(`${this.financialEventUrl}/?name=${term}`)
+      .pipe(
+        catchError(
+          this.handleError<FinancialEvent[]>('searchFinancialEvents', [])
+        )
+      );
+  }
+
   /* ------------------- ERROR HANDLING IMPLEMENTATION -------------------- */
 
   /**

@@ -22,11 +22,9 @@
 <ul
   *ngFor="let financialEvent of financialEvents"
   routerLink="/events/{{ financialEvent.id }}"
-  class="flex flex-row items-center justify-start border-b border-zinc-500"
+  class="flex flex-row items-center justify-start border-b border-zinc-500 pb-2 pt-2"
 >
-  <li
-    class="basis-1/6 flex items-center justify-center rounded-full bg-purple-500 h-full"
-  >
+  <li class="financial-event-icon bg-purple-600 border-purple-600">
     {{ financialEvent.type.charAt(0) }}
   </li>
   <li class="flex flex-col basis-1/2">

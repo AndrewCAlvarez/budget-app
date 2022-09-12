@@ -17,6 +17,7 @@ import { RegisterComponent } from './register/register.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SummaryComponent } from './summary/summary.component';
 import { ChartComponent } from './chart/chart.component';
+import { SearchComponent } from './search/search.component';
 
 // Mock financial event data import
 // TODO: Remove once real data is accessed via api
@@ -35,13 +36,14 @@ import { ChartComponent } from './chart/chart.component';
     PageNotFoundComponent,
     SummaryComponent,
     ChartComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    NgChartsModule
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
