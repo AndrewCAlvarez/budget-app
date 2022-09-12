@@ -31,7 +31,15 @@ class FinancialEventController {
         List<FinancialEvent> financialEvents = repository.findByUserId(userId);
         return financialEvents;
     }
-    // end::get-aggregate-root[]
+
+    // TODO implement find by category
+    // GET all events by category
+//    @GetMapping("/users/{userId}/events/{category}")
+//    @CrossOrigin(origins = "http://localhost:4200")
+//    List<FinancialEvent> allByCategory(@PathVariable Long userId, @PathVariable String category) {
+//        List<FinancialEvent> financialEvents = repository.findAll()
+//        return financialEvents;
+//    }
 
     // POST single item
     @CrossOrigin(origins = "http://localhost:4200")

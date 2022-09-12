@@ -114,7 +114,8 @@ export class FinancialEventService {
   }
 
   /* ------------------- SEARCH ------------------------*/
-  /* GET financial events whose name contains search term */
+  /* The api endpoint needs to be setup .There is no path for /?name={term}
+   GET financial events whose name contains search term */
   searchFinancialEvents(term: string): Observable<FinancialEvent[]> {
     if (!term.trim()) {
       // if not search term, return empty financialEvent array.
