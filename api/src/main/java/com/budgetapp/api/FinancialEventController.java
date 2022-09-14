@@ -10,6 +10,7 @@ import java.util.Optional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 class FinancialEventController {
 
     private final FinancialEventRepository repository;
@@ -22,11 +23,17 @@ class FinancialEventController {
         this.userRepository = userRepository;
     }
 
+    // Login
+    @PostMapping("/login")
+    String login(){
+        System.out.println("Login request.");
+        return "login";
+    }
+
     // GET all events by user id
     // Aggregate root
     // tag::get-aggregate-root[]
     @GetMapping("/users/{userId}/events")
-    @CrossOrigin(origins = "http://localhost:4200")
     List<FinancialEvent> all(@PathVariable Long userId) {
         List<FinancialEvent> financialEvents = repository.findByUserId(userId);
         return financialEvents;
@@ -42,7 +49,6 @@ class FinancialEventController {
 //    }
 
     // POST single item
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/events")
     FinancialEvent newFinancialEvent(@RequestBody FinancialEvent newFinancialEvent) {
 
@@ -62,7 +68,6 @@ class FinancialEventController {
     }
 
     // GET Single item
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/events/{id}")
     FinancialEvent one(@PathVariable Long id) {
         System.out.println("GET FINANCIAL EVENT ID=" + id);
@@ -71,7 +76,6 @@ class FinancialEventController {
     }
 
     // PUT single item
-    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/events/{id}")
     FinancialEvent replaceFinancialEvent(@RequestBody FinancialEvent newFinancialEvent, @PathVariable Long id) {
 
@@ -94,7 +98,6 @@ class FinancialEventController {
 
 
     // DELETE
-    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/events/{id}")
     void deleteEmployee(@PathVariable Long id) {
         System.out.println("Delete financial event id=" + id);

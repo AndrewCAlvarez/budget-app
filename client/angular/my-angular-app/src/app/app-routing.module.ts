@@ -1,6 +1,6 @@
 // No need to add paths in here. That can be found and added in app.module.ts
 
-import { NgModule } from '@angular/core';
+import { Input, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FinancialEventDetailsComponent } from './financial-event-details/financial-event-details.component';
@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'events/:id', component: FinancialEventDetailsComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'add', component: FinancialEventFormComponent },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
 

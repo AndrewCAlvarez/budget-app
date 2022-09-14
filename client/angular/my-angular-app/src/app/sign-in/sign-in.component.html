@@ -1,8 +1,34 @@
 <!-- Mock form to illustrate app flow. -->
 <!-- TODO: Implement sign in -->
-<input type="text" placeholder="username" />
-<input type="text" placeholder="password" />
-<button>Sign in</button>
-<a class="button" routerLink="/register" routerLinkActive="activebutton"
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-col">
+  <label for="username" class="text-gray-200">Username</label>
+  <input
+    id="username"
+    formControlName="username"
+    required
+    type="text"
+    placeholder="username"
+    class="text-black"
+  />
+
+  <label for="password" class="text-gray-200">Password</label>
+  <input
+    id="password"
+    formControlName="password"
+    required
+    type="text"
+    placeholder="password"
+    class="text-black"
+  />
+
+  <button
+    type="submit"
+    [disabled]="!loginForm.valid"
+    class="bg-green-200 text-white"
+  >
+    Sign in
+  </button>
+</form>
+<!-- <a class="button" routerLink="/register" routerLinkActive="activebutton"
   >Register New Account</a
->
+> -->

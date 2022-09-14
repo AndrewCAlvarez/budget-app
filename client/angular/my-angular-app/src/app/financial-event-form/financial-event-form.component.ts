@@ -21,6 +21,13 @@ export class FinancialEventFormComponent implements OnInit {
   @Input() financialEvent!: FinancialEvent | undefined;
   @Input() isNewFinancialEvent: boolean | undefined;
 
+  constructor(
+    private financialEventService: FinancialEventService,
+    private fb: FormBuilder
+  ) {}
+
+  ngOnInit(): void {}
+
   types = [
     'Food',
     'House',
@@ -52,13 +59,6 @@ export class FinancialEventFormComponent implements OnInit {
     this.submitted = true;
     this.transactionForm.reset();
   }
-
-  constructor(
-    private financialEventService: FinancialEventService,
-    private fb: FormBuilder
-  ) {}
-
-  ngOnInit(): void {}
 
   update(amount: number, type: string, description: string): void {
     if (this.financialEvent) {

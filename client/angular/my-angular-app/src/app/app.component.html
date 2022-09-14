@@ -25,6 +25,10 @@
 </nav>
 
 <!-- router-outlet is the component that actually displays other components. The links above tell Angular which address the app should go to. -->
-<div class="container mt-20">
+<div *ngIf="!authenticated" class="mt-20">
+  <app-sign-in></app-sign-in>
+</div>
+
+<div *ngIf="authenticated" class="container mt-20">
   <router-outlet></router-outlet>
 </div>
