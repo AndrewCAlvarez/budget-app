@@ -25,7 +25,7 @@ export class SignInComponent implements OnInit {
       typeof this.loginForm.value.password == 'string'
     ) {
       this.submitted = true;
-      this.loginForm.reset();
+      // this.loginForm.reset();
 
       this.auth
         .authenticate(

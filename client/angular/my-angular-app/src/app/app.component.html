@@ -16,7 +16,7 @@
     <a href="#" class="basis-8 text-center"><i class="fa-solid fa-user"></i></a>
     <a
       class="basis-8 text-center"
-      routerLink="/sign-in"
+      routerLink="/login"
       routerLinkActive="activebutton"
       ><i class="fa-solid fa-arrow-right-to-bracket"></i
     ></a>
@@ -25,10 +25,10 @@
 </nav>
 
 <!-- router-outlet is the component that actually displays other components. The links above tell Angular which address the app should go to. -->
-<div *ngIf="!authenticated" class="mt-20">
+<!-- <div *ngIf="!authenticated" class="mt-20">
   <app-sign-in></app-sign-in>
-</div>
+</div> -->
 
-<div *ngIf="authenticated" class="container mt-20">
+<div class="container mt-20">
   <router-outlet></router-outlet>
 </div>

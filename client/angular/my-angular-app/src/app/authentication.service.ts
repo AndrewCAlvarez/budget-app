@@ -3,17 +3,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 /** Some http requests will require an httpOptions parameter instantiated here. */
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    Authorization: 'my-auth-token',
-  }),
-};
-
-export interface User {
-  username: '';
-  password: '';
-}
+// const httpOptions = {
+//   headers: new HttpHeaders({
+//     'Content-Type': 'application/json',
+//     Authorization: 'my-auth-token',
+//   }),
+// };
 
 @Injectable({
   providedIn: 'root',
@@ -23,12 +18,16 @@ export class AuthenticationService {
 
   url = 'http://localhost:8080';
 
-  authenticate(username: string, password: string): Observable<User> {
+  authenticate(username: string, password: string) {
     console.log('Sending request to ' + this.url + '/login');
-    let user = {
-      username: username,
-      password: password,
+
+    let authString = 'Basic' + ` ${username}:${password}`;
+
+    let httpOptions = {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'applicatoin/json')
+        .set('Authorization', authString),
     };
-    return this.http.post<User>(this.url + '/login', user, httpOptions);
+    return this.http.post(this.url + '/login', {}, httpOptions);
   }
 }

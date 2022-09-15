@@ -13,9 +13,9 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'financial-events', component: FinancialEventsComponent },
   { path: 'events/:id', component: FinancialEventDetailsComponent },
-  { path: 'sign-in', component: SignInComponent },
+  { path: 'login', component: SignInComponent },
   { path: 'add', component: FinancialEventFormComponent },
-  { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
 

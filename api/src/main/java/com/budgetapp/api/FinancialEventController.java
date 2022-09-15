@@ -10,7 +10,7 @@ import java.util.Optional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 class FinancialEventController {
 
     private final FinancialEventRepository repository;
@@ -23,12 +23,7 @@ class FinancialEventController {
         this.userRepository = userRepository;
     }
 
-    // Login
-    @PostMapping("/login")
-    String login(){
-        System.out.println("Login request.");
-        return "login";
-    }
+
 
     // GET all events by user id
     // Aggregate root

@@ -21,6 +21,9 @@ class User {
     @Column(nullable = false, unique = true, length = 45)
     private String email;
 
+    @Column(nullable = false, unique = true, length = 45)
+    private String username;
+
     @Column(nullable = false, length = 64)
     private String password;
 
@@ -54,6 +57,14 @@ class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -90,6 +101,7 @@ class User {
         User user = (User) o;
         return Objects.equals(this.id, user.id)
             && Objects.equals(this.email, user.email)
+            && Objects.equals(this.username, user.username)
             && Objects.equals(this.password, user.password)
             && Objects.equals(this.firstName, user.firstName)
             && Objects.equals(this.lastName, user.lastName);
@@ -98,7 +110,7 @@ class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id, this.email, this.password, this.firstName, this.lastName);
+        return Objects.hash(this.id, this.email,this.username, this.password, this.firstName, this.lastName);
     }
 
     @Override
@@ -106,6 +118,7 @@ class User {
         return "User{"
                 + "id=" + this.id
                 + ", email='" + this.email + '\''
+                + ", username='" + this.username + '\''
                 + ", first name='" + this.firstName + '\''
                 + ", last name='" + this.lastName + '\'' + '}';
     }
