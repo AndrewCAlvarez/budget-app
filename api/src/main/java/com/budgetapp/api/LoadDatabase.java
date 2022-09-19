@@ -19,7 +19,7 @@ class LoadDatabase {
     private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 
     @Bean
-    CommandLineRunner initDatabase(UserRepository userRepository, FinancialEventRepository financialEventRepository) {
+    CommandLineRunner initDatabase(UserRepository userRepository) {
 
         return args -> {
 
@@ -28,7 +28,7 @@ class LoadDatabase {
 //                    "ringbearer@bagend.com", "sam1234", "Frodo", "Baggins"));
 //            User sam = userRepository.save(new User(
 //                    "gardenboss@shire.com", "mrfrodo1234", "Samwise", "Gamgee"));
-            User frodo = userRepository.save(new User(1, "frodo", "password", true, "ADMIN"));
+            User frodo = userRepository.save(new User(1, "frodo", "password", true, "ROLE_ADMIN"));
 
 
             // Log the user info.
