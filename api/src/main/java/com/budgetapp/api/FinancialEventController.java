@@ -1,6 +1,5 @@
 package com.budgetapp.api;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -16,9 +15,9 @@ class FinancialEventController {
     private final FinancialEventRepository repository;
 
     // TODO: Not sure about adding userRepository here. I have it written here so i can make mock users to push along my Angular development.
-    private final UserRepository userRepository;
+    private final OldUserRepository userRepository;
 
-    FinancialEventController(FinancialEventRepository repository, UserRepository userRepository) {
+    FinancialEventController(FinancialEventRepository repository, OldUserRepository userRepository) {
         this.repository = repository;
         this.userRepository = userRepository;
     }
@@ -48,7 +47,7 @@ class FinancialEventController {
     FinancialEvent newFinancialEvent(@RequestBody FinancialEvent newFinancialEvent) {
 
         // TODO: Add a parameter or authorization of some kind to specify a user instead of hardcoding one.
-        Optional<User> frodo = userRepository.findById(1L);
+        Optional<OldUser> frodo = userRepository.findById(1L);
 
         FinancialEvent financialEvent = new FinancialEvent();
         financialEvent.setId(1L);

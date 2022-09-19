@@ -13,7 +13,8 @@ public class FinancialEvent {
     private Long id;
 
     // user is the user a financial event is associated with.
-    private @ManyToOne User user;
+    private @ManyToOne
+    OldUser user;
     private LocalDateTime date;
     private BigDecimal amount;
     private String type;
@@ -22,7 +23,7 @@ public class FinancialEvent {
     FinancialEvent() {
     }
 
-    FinancialEvent(Long id, User user, LocalDateTime date, BigDecimal amount, String type, String description) {
+    FinancialEvent(Long id, OldUser user, LocalDateTime date, BigDecimal amount, String type, String description) {
         this.id = id;
         this.user = user;
         this.date = date;
@@ -40,11 +41,11 @@ public class FinancialEvent {
         this.id = id;
     }
 
-    public User getUser() {
+    public OldUser getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(OldUser user) {
         this.user = user;
     }
 

@@ -14,7 +14,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "users")
-class User {
+class OldUser {
 
     private @Id @GeneratedValue Long id;
 
@@ -33,9 +33,9 @@ class User {
     @Column(name = "last_name", nullable = false, length = 20)
     private String lastName;
 
-    User(){};
+    OldUser(){};
 
-    User(String email, String password, String firstName, String lastName) {
+    OldUser(String email, String password, String firstName, String lastName) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;
@@ -96,9 +96,9 @@ class User {
 
         if (this == o)
             return true;
-        if (!(o instanceof User))
+        if (!(o instanceof OldUser))
             return false;
-        User user = (User) o;
+        OldUser user = (OldUser) o;
         return Objects.equals(this.id, user.id)
             && Objects.equals(this.email, user.email)
             && Objects.equals(this.username, user.username)
