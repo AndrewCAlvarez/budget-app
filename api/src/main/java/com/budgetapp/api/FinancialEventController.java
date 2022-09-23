@@ -1,15 +1,15 @@
-//package com.budgetapp.api;
-//
-//import java.time.LocalDateTime;
-//import java.util.List;
-//import java.util.Optional;
-//
-//
-//import org.springframework.web.bind.annotation.*;
-//
-//@RestController
-////@CrossOrigin(origins = "http://localhost:4200")
-//class FinancialEventController {
+package com.budgetapp.api;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+
+
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+//@CrossOrigin(origins = "http://localhost:4200")
+class FinancialEventController {
 //
 //    private final FinancialEventRepository repository;
 //
@@ -96,4 +96,4 @@
 //        System.out.println("Delete financial event id=" + id);
 //        repository.deleteById(id);
 //    }
-//}
+}
