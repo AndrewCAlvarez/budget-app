@@ -1,0 +1,18 @@
+<h2>Event Details</h2>
+
+<!-- View mode -->
+<div *ngIf="!editEnabled">
+  <p>Id: {{ financialEvent?.id }}</p>
+  <p>Type: {{ financialEvent?.type }}</p>
+  <p>Amount: {{ financialEvent?.amount }}</p>
+  <p>Description: {{ financialEvent?.description }}</p>
+</div>
+
+<!-- Edit mode -->
+<!-- [financialEvent] is a property passed down to the child component app-financial-event-form -->
+<app-financial-event-form
+  *ngIf="editEnabled"
+  [financialEvent]="financialEvent"
+  [isNewFinancialEvent]="false"
+></app-financial-event-form>
+<button (click)="edit()">Edit</button>

@@ -10,6 +10,7 @@ import java.util.Optional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 class FinancialEventController {
 
     private final FinancialEventRepository repository;

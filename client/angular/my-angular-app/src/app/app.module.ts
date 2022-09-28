@@ -8,16 +8,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
 
 // Components
-import { FinancialEventsComponent } from './financial-events/financial-events.component';
-import { FinancialEventFormComponent } from './financial-event-form/financial-event-form.component';
-import { FinancialEventDetailsComponent } from './financial-event-details/financial-event-details.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { RegisterComponent } from './register/register.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SummaryComponent } from './summary/summary.component';
-import { ChartComponent } from './chart/chart.component';
-import { SearchComponent } from './search/search.component';
+import { FinancialEventsComponent } from './components/financial-events/financial-events.component';
+import { FinancialEventFormComponent } from './components/financial-event-form/financial-event-form.component';
+import { FinancialEventDetailsComponent } from './components/financial-event-details/financial-event-details.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { RegisterComponent } from './components/register/register.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SummaryComponent } from './components/summary/summary.component';
+import { ChartComponent } from './components/chart/chart.component';
+import { SearchComponent } from './components/search/search.component';
 
 // Mock financial event data import
 // TODO: Remove once real data is accessed via api

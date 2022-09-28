@@ -1,0 +1,19 @@
+.summary-btn {
+  // w-10 h-10 rounded-full border-2 border-black flex justify-center items-center basis-1/4
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  border-width: 2px;
+  border-color: white;
+}
+
+.summary-btn-container {
+  // basis-1/4 flex justify-center items-center
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 25%;
+}

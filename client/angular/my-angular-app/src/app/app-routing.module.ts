@@ -2,12 +2,12 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { FinancialEventDetailsComponent } from './financial-event-details/financial-event-details.component';
-import { FinancialEventFormComponent } from './financial-event-form/financial-event-form.component';
-import { FinancialEventsComponent } from './financial-events/financial-events.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { FinancialEventDetailsComponent } from './components/financial-event-details/financial-event-details.component';
+import { FinancialEventFormComponent } from './components/financial-event-form/financial-event-form.component';
+import { FinancialEventsComponent } from './components/financial-events/financial-events.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
